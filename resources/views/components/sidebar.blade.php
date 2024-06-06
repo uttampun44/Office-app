@@ -6,9 +6,9 @@
 
           <div class="sidebar-routes">
               <ul>
-                <li><a class="text-white font-bold text-lg">Dashboard</a></li>
-                  <li><a class="text-white font-bold text-lg">Roles</a></li>
-                  <li><a class="text-white font-bold text-lg">permissions</a></li>
+                <li><a href="{{route('dashboard')}}" class="text-white font-bold text-lg">Dashboard</a></li>
+                  <li><a href="{{route('roles.index')}}" class="text-white font-bold text-lg">Roles</a></li>
+                  <li><a href="{{route('permission.index')}}" class="text-white font-bold text-lg">permissions</a></li>
               </ul>
           </div>
     </div>
