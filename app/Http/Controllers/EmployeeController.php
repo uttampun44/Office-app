@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
-class UserController extends Controller
+class EmployeeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index():View
     {
-        //
+        return view('employees.index');
     }
 
     /**
@@ -19,7 +20,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('employees.create');
     }
 
     /**
@@ -43,7 +44,7 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('employees.edit');
     }
 
     /**
