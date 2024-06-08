@@ -5,7 +5,7 @@
     <div class="py-12">
         <div class="ml-80  sm:px-6 lg:px-8">
             <div class="permission-create">
-                <a href="" class="bg-blue-600 text-white p-2 rounded-md">Create Permission</a>
+                <a href="{{route('permission.create')}}" class="bg-blue-600 text-white p-2 rounded-md">Create Permission</a>
            </div>
             <div class="bg-white shadow-sm sm:rounded-lg">
                 <div class="table w-full mt-4">
@@ -34,11 +34,11 @@
                    {{$loop->iteration}}
                 </td>
                 <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{$loop->permission_name}}
+                    {{$permission->permission_name}}
                  </td>
 
                  <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{$loop->permission_name}}
+                    {{$permission->permission_name}}
                  </td>
             </tr>
             @empty

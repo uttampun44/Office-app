@@ -5,7 +5,7 @@
     <div class="py-12">
         <div class="ml-80  sm:px-6 lg:px-8">
             <div class="roles-create">
-                <a href="" class="bg-blue-600 text-white p-2 rounded-md">Create Roles</a>
+                <a href="{{route('roles.create')}}" class="bg-blue-600 text-white p-2 rounded-md">Create Roles</a>
            </div>
             <div class="dark:bg-gray-700 shadow-sm sm:rounded-lg">
                
@@ -38,11 +38,11 @@
                    {{$loop->iteration}}
                 </td>
                 <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{$loop->roles_name}}
+                    {{$role->roles_name}}
                  </td>
 
                  <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{$loop->roles_name}}
+                    {{$role->roles_name}}
                  </td>
             </tr>
             @empty
