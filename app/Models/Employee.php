@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Employee extends Model
 {
@@ -20,6 +21,16 @@ class Employee extends Model
        'address',
        'user_id'
      ];
+
+     public function users()
+     {
+      return $this->belongsTo(User::class);
+     }
+
+     public function designation():BelongsTo
+     {
+      return $this->belongsTo(Role::class, 'designation_id');
+     }
 
     use HasFactory;
 }

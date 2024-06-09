@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 
 class EmployeeController extends Controller
@@ -12,15 +16,21 @@ class EmployeeController extends Controller
      */
     public function index():View
     {
-        return view('employees.index');
+        $employees = Employee::with('designation')->get();
+     
+
+        return view('employees.index')->with('employees', $employees,);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create():View
     {
-        return view('employees.create');
+        $roles = Role::all();
+
+
+        return view('employees.create')->with('roles', $roles);
     }
 
     /**
@@ -28,7 +38,26 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $user =  User::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password'))
+        ]);
+
+
+        Employee::create([
+           'name' => $request->input('name'),
+           'email' => $request->input('email'),
+           'password' => Hash::make($request->input('password')),
+           'gender' => $request->input('gender'),
+           'number' => $request->input('number'),
+           'date_of_birth' => $request->input('date_of_birth'),
+           'designation_id' => $request->input('designation'),
+           'address' => $request->input('address'),
+           'user_id' => $user->id
+        ]);
+
+       return redirect()->route('employees.index');
     }
 
     /**
@@ -44,6 +73,8 @@ class EmployeeController extends Controller
      */
     public function edit(string $id)
     {
+        $employees = Employee::findOrFail($id);
+
         return view('employees.edit');
     }
 
