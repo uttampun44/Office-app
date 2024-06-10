@@ -10,6 +10,7 @@
 
 <form class="max-w-md mx-auto" method="POST" action="{{route('employees.update', $employees->id)}}">
     @csrf
+    @method('PUT')
     <div class=" w-full mb-5 group">
         <label for="floating_name" class="peer-focus:font-medium  text-sm text-gray-50">Name</label>
         <input type="text" name="name" value="{{$employees->name}}" id="floating_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
