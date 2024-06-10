@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Permission;
 use App\Models\Role;
+use App\Models\RolePermission;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -28,5 +30,19 @@ class RoleController extends Controller
        ]);
 
        return redirect()->route('roles.index');
+    }
+
+    public function edit(Request $request, $id)
+    {
+        $permissions = Permission::all();
+        
+        $roles = Role::find($id);
+
+        // RolePermission::create([
+        //   'permission_id' => $request->input('roles_permission'),
+        //    'role_id' => $roles->id
+        // ]);
+        
+        return view('roles.edit', compact('permissions', 'roles'));
     }
 }

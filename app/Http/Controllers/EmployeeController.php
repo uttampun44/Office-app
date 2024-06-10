@@ -88,7 +88,20 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $employees = Employee::find($id);
+
+        $employees->name = $request->input('name');
+        $employees->email = $request->input('email');
+        $employees->password = $request->input('password');
+        $employees->gender = $request->input('gender');
+        $employees->number = $request->input('number');
+        $employees->date_of_birth = $request->input('date_of_birth');
+        $employees->designation_id = $request->input('designation');
+        $employees->address = $request->input('address');
+
+        $employees->save();
+
+        return redirect()->route('employees.index');
     }
 
     /**

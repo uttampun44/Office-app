@@ -42,7 +42,7 @@
                  </td>
 
                  <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{$role->roles_name}}
+                   <a href="{{route('roles.edit', $role->id)}}">Edit</a>
                  </td>
             </tr>
             @empty
