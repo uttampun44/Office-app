@@ -17,7 +17,7 @@ class Employee extends Model
        'gender',
        'number',
        'date_of_birth',
-       'designation',
+       'role_id',
        'address',
        'user_id'
      ];
@@ -29,7 +29,7 @@ class Employee extends Model
 
      public function designation():BelongsTo
      {
-      return $this->belongsTo(Role::class, 'designation_id');
+      return $this->belongsTo(Role::class, 'role_id');
      }
 
     use HasFactory;

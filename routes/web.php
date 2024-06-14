@@ -26,7 +26,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/roles', [RoleController::class, 'index'])->name('roles.index');
     Route::get('/roles/create', [RoleController::class, 'create'])->name('roles.create');
     Route::post('roles/create', [RoleController::class, 'store'])->name('roles.store');
-    Route::get('/roles/edit/{id}', [RoleController::class, 'edit'])->name('roles.edit');
+    Route::get('/roles/{id}', [RoleController::class, 'edit'])->name('roles.edit');
+    Route::post('/roles/edit/{id}', [RoleController::class, 'update'])->name('roles.update');
 
     /*********************Permissions*****************************/ 
     Route::get('/permission', [PermissionController::class, 'index'])->name('permission.index');
