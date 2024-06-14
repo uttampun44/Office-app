@@ -38,6 +38,9 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
+
+    // dd($request->all());
+
        $user =  User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
@@ -52,7 +55,7 @@ class EmployeeController extends Controller
            'gender' => $request->input('gender'),
            'number' => $request->input('number'),
            'date_of_birth' => $request->input('date_of_birth'),
-           'designation_id' => $request->input('designation'),
+           'role_id' => $request->input('designation'),
            'address' => $request->input('address'),
            'user_id' => $user->id
         ]);

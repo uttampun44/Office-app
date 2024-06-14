@@ -4,13 +4,13 @@
 
     <div class="py-12">
         <div class="ml-80 mx-auto sm:px-6 lg:px-8">
-            <div class=" dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg py-4">
+            <div class=" bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg py-4">
                 
 
 <form class="max-w-sm mx-auto" method="POST" action="{{route('roles.store')}}">
     @csrf
     <div class="mb-5">
-      <label for="roles" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
+      <label for="roles" class="block mb-2 text-sm font-medium text-white dark:text-white">Role</label>
       <input type="text" name="roles" id="roles" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  required />
     </div>
 

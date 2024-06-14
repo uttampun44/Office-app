@@ -32,17 +32,28 @@ class RoleController extends Controller
        return redirect()->route('roles.index');
     }
 
-    public function edit(Request $request, $id)
+    public function edit($id)
     {
+        $roles = Role::find($id);
         $permissions = Permission::all();
         
-        $roles = Role::find($id);
+        return view('roles.edit')->with(
+            [
+            'permissions' => $permissions,
+             'roles' => $roles
+            ]
+            );
+    }
 
-        // RolePermission::create([
-        //   'permission_id' => $request->input('roles_permission'),
-        //    'role_id' => $roles->id
-        // ]);
-        
-        return view('roles.edit', compact('permissions', 'roles'));
+    public function update(Request $request, $id)
+    {
+           $roles= Role::find($id);
+
+           RolePermission::create([
+            'permission_id' => $request->input('permission_id'),
+            'role_id' => $roles->id
+           ]);
+
+           return redirect()->route('roles.index');
     }
 }
