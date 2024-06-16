@@ -17,9 +17,8 @@ class Employee extends Model
        'gender',
        'number',
        'date_of_birth',
-       'role_id',
+       'designation',
        'address',
-       'user_id'
      ];
 
      public function users()
@@ -31,6 +30,8 @@ class Employee extends Model
      {
       return $this->belongsTo(Role::class, 'role_id');
      }
+
+     
 
     use HasFactory;
 }
