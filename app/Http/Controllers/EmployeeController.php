@@ -39,28 +39,30 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
 
-    // dd($request->all());
-
-       $user =  User::create([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'password' => Hash::make($request->input('password'))
-        ]);
 
 
-        Employee::create([
-           'name' => $request->input('name'),
-           'email' => $request->input('email'),
-           'password' => Hash::make($request->input('password')),
-           'gender' => $request->input('gender'),
-           'number' => $request->input('number'),
-           'date_of_birth' => $request->input('date_of_birth'),
-           'role_id' => $request->input('designation'),
-           'address' => $request->input('address'),
-           'user_id' => $user->id
-        ]);
+       Employee::create([
+          'name' => $request->input('name'),
+          'email' => $request->input('email'),
+          'password' => Hash::make($request->input('password')),
+          'gender' => $request->input('gender'),
+          'number' => $request->input('number'),
+          'date_of_birth' => $request->input('date_of_birth'),
+          'designation' => $request->input('designation'),
+          'address' => $request->input('address'),
+       ]);
 
-       return redirect()->route('employees.index');
+       User::create([
+        'name' => $request->input('name'),
+        'email' => $request->input('email'),
+        'password' => Hash::make($request->input('password')),
+        'role_id' => $request->input('designation')
+    ]);
+
+
+      return redirect()->route('employees.index');
+
+ 
     }
 
     /**
@@ -99,7 +101,7 @@ class EmployeeController extends Controller
         $employees->gender = $request->input('gender');
         $employees->number = $request->input('number');
         $employees->date_of_birth = $request->input('date_of_birth');
-        $employees->designation_id = $request->input('designation');
+        $employees->designation = $request->input('designation');
         $employees->address = $request->input('address');
 
         $employees->save();

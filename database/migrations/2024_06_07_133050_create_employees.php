@@ -19,14 +19,8 @@ return new class extends Migration
             $table->string("gender");
             $table->string("number", 20);
             $table->date("date_of_birth");
-            $table->unsignedBigInteger('role_id');
-            $table->foreign("role_id")
-                  ->references('id')->on('roles')
-                  ->onUpdate('cascade')->onUpdate('cascade');
+            $table->string('designation');
             $table->longText("address");
-            $table->unsignedBigInteger("user_id");
-            $table->foreign("user_id")
-                  ->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

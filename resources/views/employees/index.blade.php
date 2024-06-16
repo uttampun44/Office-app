@@ -77,7 +77,7 @@
                 {{$employee->date_of_birth}}
              </td>
              <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-               {{$employee->designation->roles_name}}
+               {{$employee->designation}}
              </td>
              <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                 {{$employee->address}}
