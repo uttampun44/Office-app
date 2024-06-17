@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use App\Models\Role;
+use App\Models\RolePermission;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -17,7 +18,11 @@ class EmployeeController extends Controller
     public function index():View
     {
         $employees = Employee::with('designation')->get();
-     
+
+           
+        $role_user =  User::with('role')->get();
+
+        $rolePermission = RolePermission::with(['permission', 'roles'])->get();
 
         return view('employees.index')->with('employees', $employees,);
     }
