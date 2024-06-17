@@ -17,13 +17,13 @@ class Permission
      */
     public function handle(Request $request, Closure $next, $permission): Response
     {
-       $user = Auth::user();
+    //    $user = Auth::user();
 
-        if (!$user || !$user->hasPermission($permission)) {
-            return response()->json([
-                'message' => 'You are not authorized to view this page'
-            ], 403);
-        }
+    //     if (!$user || !$user->hasPermission($permission)) {
+    //         return response()->json([
+    //             'message' => 'You are not authorized to view this page'
+    //         ], 403);
+    //     }
 
         return $next($request);
     }

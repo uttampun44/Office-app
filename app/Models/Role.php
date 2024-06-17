@@ -17,7 +17,7 @@ class Role extends Model
 
     public function permissions()
     {
-      return $this->belongsTo(Permission::class, 'role_has_permission', 'role_id', 'permission_id');
+      return $this->belongsTo(Permission::class);
     }
 
     public function employees():HasMany
@@ -29,5 +29,7 @@ class Role extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+   
     use HasFactory;
 }

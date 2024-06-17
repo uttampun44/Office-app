@@ -17,12 +17,17 @@ class RolePermission extends Model
 
     public function roles()
     {
-        return $this->belongsTo(Role::class, 'id');
+        return $this->belongsTo(Role::class, 'role_id');
     }
 
     public function permission()
     {
-        return $this->belongsTo(Permission::class, 'id');
+        return $this->belongsTo(Permission::class, 'permission_id');
+    }
+
+    public function users()
+    {
+        return $this->belongsTo(User::class);
     }
 
     use HasFactory;

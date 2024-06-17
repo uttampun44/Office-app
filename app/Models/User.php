@@ -50,18 +50,11 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
-    public function hasPermission($permissions)
+
+    public function permission($permissions =  null)
     {
-    
-        if (!$this->role) {
-            return false;
-        }
-     $this->role->load('permissions');
-       
-        if (is_array($permissions)) {
-            return $this->role->permissions->whereIn('permission_name', $permissions);
-        }
-    
-        return $this->role->permissions->contains('permission_name', $permissions);
+         
+        $role_user =  User::with('role', 'permission')->get();
+
     }
 }
