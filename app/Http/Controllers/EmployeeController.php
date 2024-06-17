@@ -19,11 +19,6 @@ class EmployeeController extends Controller
     {
         $employees = Employee::with('designation')->get();
 
-           
-        $role_user =  User::with('role')->get();
-
-        $rolePermission = RolePermission::with(['permission', 'roles'])->get();
-
         return view('employees.index')->with('employees', $employees,);
     }
 

@@ -33,7 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/roles/edit/{id}', [RoleController::class, 'update'])->name('roles.update');
 
     /*********************Permissions*****************************/ 
-    Route::get('/permission', [PermissionController::class, 'index'])->name('permission.index');
+    Route::get('/permission', [PermissionController::class, 'index'])->middleware('permission:permission.index')->name('permission.index');
     Route::get('/permission/create', [PermissionController::class, 'create'])->name('permission.create');
     Route::post('/permission/create', [PermissionController::class, 'store'])->name('permission.store');
 

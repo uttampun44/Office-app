@@ -17,13 +17,22 @@ class Permission
      */
     public function handle(Request $request, Closure $next, $permission): Response
     {
-    //    $user = Auth::user();
+        $user = Auth::user();
 
-    //     if (!$user || !$user->hasPermission($permission)) {
-    //         return response()->json([
-    //             'message' => 'You are not authorized to view this page'
-    //         ], 403);
-    //     }
+        if (!$user) {
+            return response()->json(['message' => 'User is not authenticated'], 401);
+        }
+
+        $superRoles = ['Super Admin', 'Admin'];
+        $userRoles = $user->role->roles_name;
+
+        if (!in_array($userRoles, $superRoles)) {
+            $permissions = explode('|', $permission);
+
+            if (!$user->permissions()->whereIn('permission_name', $permissions)->exists()) {
+                return response()->json(['message' => 'Sorry! You have no permission to perform this action'], 403);
+            }
+        }
 
         return $next($request);
     }
